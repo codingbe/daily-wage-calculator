@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Poor Story";
+  max-width: 500px;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input {
+  all: unset;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+  width: 200px;
+  text-align: center;
+}
+
+button {
+  all: unset;
+  background-color: #f2f2f2;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+form button {
+  width: 40px;
+}
+
+.wageRecordList_container {
+  display: flex;
+  align-items: center;
+}
+
+.wageRecordList_container button {
+  margin-left: 8px;
+}
+
+#wageRecordList ul {
+  margin: 0;
+  padding: 0;
+}
+
+#wageRecordList li {
+  display: grid;
+  grid-template-columns: repeat(2, 100px);
+  justify-items: right;
+}
+
+strong {
+  color: red;
+}

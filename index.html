@@ -5,50 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>일급합산기</title>
+    <script src="index.js" defer></script>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <form>
-      <div>
-        <label for="date">급여일</label>
-        <input type="date" name="date" id="currentDate" />
-      </div>
-      <div>
-        <label for="dailyWageInput">급여액</label>
-        <input type="number" id="dailyWageInput" />
-      </div>
-      <button type="submit">확인</button>
-      <button type="button" class="reset_button">초기화</button>
+    <form id="wageForm">
+      <h1>일급 기록</h1>
+      <input type="date" class="wageForm_datetime" />
+      <input type="text" class="today_wage" />
+      <button type="submit">등록</button>
     </form>
-    <h1 class="total_wage"></h1>
-    <h1 class="remain_wage"></h1>
+
+    <div id="wageDashboard">
+      <h1 class="wage_sum">일급 합산: 10000원</h1>
+      <h1 class="wage_remain">남은 금액: 5000원</h1>
+    </div>
+
+    <div id="wageRecordList">
+      <div class="wageRecordList_container">
+        <h1>일급 기록 현황</h1>
+        <button>초기화</button>
+      </div>
+      <ul></ul>
+    </div>
   </body>
-  <script>
-    let date = "";
-    const currentDatetime = document.getElementById("currentDate");
-    const form = document.querySelector("form");
-    const dailyWage = document.getElementById("dailyWageInput");
-    const totalWagePrint = document.querySelector(".total_wage");
-    const resetButton = document.querySelector(".reset_button");
-    const remainWage = document.querySelector(".remain_wage");
-    let totalWage = Number(localStorage.getItem("totalWage")) || 0;
-
-    totalWagePrint.innerText = `총금액: ${totalWage}`;
-    remainWage.innerText = `남은금액: ${2500000 - totalWage}`;
-
-    resetButton.addEventListener("click", (e) => {
-      localStorage.clear();
-    });
-    currentDatetime.addEventListener("change", (e) => (date = e.target.value));
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const wage = Number(dailyWage.value);
-      if (wage > 0 && currentDatetime.value) {
-        totalWage += wage;
-        localStorage.setItem("totalWage", totalWage);
-        localStorage.setItem("currentDatetime", currentDatetime.value);
-        totalWagePrint.innerText = `총금액: ${totalWage}`;
-        remainWage.innerText = `남은금액: ${2500000 - totalWage}`;
-      } else alert("입력좀해라");
-    });
-  </script>
 </html>
